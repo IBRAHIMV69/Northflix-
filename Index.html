@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BC GAME Clone</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    :root {
+      --primary-green: #00ff88;
+      --dark-bg: #f5f5f5;
+      --card-bg: #242424;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--dark-bg);
+      color: white;
+      padding-top: 120px;
+    }
+
+    .sticky-container {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: var(--dark-bg);
+      border-bottom: 1px solid #ccc;
+    }
+
+    .header {
+      padding: 5px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 1rem;
+      font-weight: 800;
+      background: linear-gradient(45deg, #00ff88, #00ccff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .header-icons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .search {
+      background-color: #ccc;
+      border-radius: 15px;
+      padding: 8px 15px;
+      display: flex;
+      align-items: center;
+      margin: 15px 20px;
+      border: 1px solid linear-gradient(45deg, #00ff88, #00ccff);
+    }
+
+    .search input {
+      border: none;
+      background: transparent;
+      color: color: #333;
+      outline: none;
+      margin-left: 10px;
+      font-size: 0.95rem;
+      width: 100%;
+    }
+
+    .section-title {
+      font-weight: 700;
+      font-size: 1.4rem;
+      padding: 8px;
+      display: flex;
+      color: #333;
+      padding-top: 1px;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .card-row {
+      display: flex;
+      overflow-x: auto;
+      gap: 15px;
+      padding: 0 20px 20px;
+      scrollbar-width: thin;
+      scrollbar-color: #363636 transparent;
+    }
+
+    .card-row::-webkit-scrollbar {
+      height: 0px;
+    }
+
+    .card-row::-webkit-scrollbar-thumb {
+      background: #363636;
+      border-radius: 3px;
+    }
+
+    .game-card {
+      min-width: 150px;
+      background: #f5f5f5;
+      border-radius: 16px;
+      position: relative;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.2s ease;
+      border: 1px solid #ccc;
+      display: block;
+    }
+
+    .game-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .game-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-bottom: 2px solid #363636;
+    }
+
+    .game-info {
+      padding: 10px;
+      position: relative;
+    }
+
+    .game-title {
+      font-weight: 600;
+      margin-bottom: 25px;
+      font-size: 0.95rem;
+      color: #333;
+    }
+
+    .game-stats {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+      color: #888;
+    }
+
+    .favorite-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(0, 0, 0, 0.6);
+      border: none;
+      color: white;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      cursor: pointer;
+      backdrop-filter: blur(4px);
+      transition: all 0.2s ease;
+    }
+
+    .favorite-btn:hover {
+      color: var(--primary-green);
+    }
+
+    .provider-tag {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 0.7rem;
+      backdrop-filter: blur(4px);
+    }
+
+    .section-hidden {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+
+<div class="sticky-container">
+  <div class="header">
+    <div class="logo">BC GAME</div>
+    <div class="header-icons">
+      <i class="fas fa-user"></i>
+      <i class="fas fa-bars"></i>
+    </div>
+  </div>
+
+  <div class="search">
+    <i class="fas fa-search"></i>
+    <input type="text" id="searchInput" placeholder="Search..." />
+  </div>
+</div>
+
+<!-- Featured Games Section -->
+<div class="section-title">
+  Featured
+</div>
+<div class="card-row">
+  <a href="https://example.com/game1" class="game-card" data-title="ALAQA" data-category="exclusive">
+    <button class="favorite-btn"><i class="far fa-heart"></i></button>
+    <img src="https://short-link.me/QSiT" alt="Wukong"/>
+    <div class="provider-tag">BC EXCLUSIVE</div>
+    <div class="game-info">
+      <div class="game-title">ALAQA</div>
+      <div class="game-stats">
+      </div>
+    </div>
+  </a>
+
+  <a href="https://example.com/game2" class="game-card" data-title="GIDAN SARAUTA" data-category="live">
+    <button class="favorite-btn"><i class="far fa-heart"></i></button>
+    <img src="https://short-link.me/TsCr" alt="Roulette"/>
+    <div class="provider-tag">👑 KING</div>
+    <div class="game-info">
+      <div class="game-title">GIDAN SARAUTA</div>
+      <div class="game-stats">
+      </div>
+    </div>
+  </a>
+
+  <a href="https://example.com/game3" class="game-card" data-title="BC CASH" data-category="slots">
+    <button class="favorite-btn"><i class="far fa-heart"></i></button>
+    <img src="https://short-link.me/TsDp" alt="BC CASH"/>
+    <div class="provider-tag">♥️ LOVE</div>
+    <div class="game-info">
+      <div class="game-title">LABARINA</div>
+      <div class="game-stats">                   
+      </div>
+    </div>
+  </a>
+</div>
+
+<!-- Popular Games Section -->
+<div class="section-title">
+  Popular
+</div>
+<div class="card-row">
+  <a href="https://example.com/game4" class="game-card" data-title="DIAMOND" data-category="slots">
+    <button class="favorite-btn"><i class="far fa-heart"></i></button>
+    <img src="https://bitly.cx/ph6T1" alt="Diamond"/>
+    <div class="provider-tag">SLOTS</div>
+    <div class="game-info">
+      <div class="game-title">DIAMOND BLAST</div>
+      <div class="game-stats">
+      </div>
+    </div>
+  </a>
+
+  <a href="https://example.com/game5" class="game-card" data-title="BACCARAT" data-category="live">
+    <button class="favorite-btn"><i class="far fa-heart"></i></button>
+    <img src="https://short-link.me/TsEy" alt="Baccarat"/>
+    <div class="provider-tag">LIVE DEALER</div>
+    <div class="game-info">
+      <div class="game-title">BACCARAT</div>
+      <div class="game-stats">
+      </div>
+    </div>
+  </a>
+
+  <a href="https://example.com/game6" class="game-card" data-title="KENO" data-category="lottery">
+    <button class="favorite-btn"><i class="far fa-heart"></i></button>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy0ysn5XzNtyZR0ncYoeTpvwF-TvlC9fjzl--49wVJYA&s" alt="Keno"/>
+    <div class="provider-tag">LOTTERY</div>
+    <div class="game-info">
+      <div class="game-title">KENO</div>
+      <div class="game-stats">
+      </div>
+    </div>
+  </a>
+</div>
+
+<!-- New Releases Section -->
+<div class="section-title">
+  <i class="fas fa-rocket"></i>
+  New Releases
+</div>
+<div class="card-row">
+  <a href="https://example.com/game7" class="game-card" data-title="SPACE" data-category="slots">
+    <button class="favorite-btn"><i class="far fa-heart"></i></button>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkzhsYkX3sQ5sxhWeZKSCcY851Scmwb6ZN1tMXNFAJn7SyGoHuF8Ckrj0&s" alt="Space"/>
+    <div class="provider-tag">NEW RELEASE</div>
+    <div class="game-info">
+      <div class="game-title">SPACE ODYSSEY</div>
+      <div class="game-stats">      
+      </div>
+    </div>
+  </a>
+
+  <a href="https://example.com/game8" class="game-card" data-title="PIRATE" data-category="exclusive">
+    <button class="favorite-btn"><i class="far fa-heart"></i></button>
+    <img src="https://via.placeholder.com/150x200?text=PIRATE" alt="Pirate"/>
+    <div class="provider-tag">BC EXCLUSIVE</div>
+    <div class="game-info">
+      <div class="game-title">PIRATE'S GOLD      </div>
+      </div>
+    </div>
+  </a>
+</div>
+
+<script>
+  const searchInput = document.getElementById('searchInput');
+  const gameCards = document.querySelectorAll('.game-card');
+  const sections = document.querySelectorAll('.section-title');
+
+  function filterGames() {
+    const searchQuery = searchInput.value.toLowerCase();
+    const isVideoSearch = searchQuery.includes('video');
+
+    gameCards.forEach(card => {
+      const matchesSearch = card.dataset.title.toLowerCase().includes(searchQuery);
+      card.style.display = matchesSearch ? 'block' : 'none';
+    });
+
+    sections.forEach(section => {
+      const cardRow = section.nextElementSibling;
+      const hasVisibleCards = Array.from(cardRow.querySelectorAll('.game-card'))
+        .some(card => card.style.display !== 'none');
+      
+      if (isVideoSearch) {
+        const hasVideoGames = Array.from(cardRow.querySelectorAll('.game-card'))
+          .some(card => card.dataset.title.toLowerCase().includes('video'));
+        section.classList.toggle('section-hidden', !hasVideoGames);
+        cardRow.classList.toggle('section-hidden', !hasVideoGames);
+      } else {
+        section.classList.toggle('section-hidden', !hasVisibleCards);
+        cardRow.classList.toggle('section-hidden', !hasVisibleCards);
+      }
+    });
+  }
+
+  searchInput.addEventListener('input', filterGames);
+
+  document.querySelectorAll('.favorite-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      btn.innerHTML = btn.innerHTML.includes('far') ? 
+        '<i class="fas fa-heart"></i>' : 
+        '<i class="far fa-heart"></i>';
+    });
+  });
+</script>
+
+</body>
+</html>
